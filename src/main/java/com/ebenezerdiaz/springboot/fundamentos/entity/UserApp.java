@@ -10,7 +10,7 @@ import java.util.Objects;
 
 @Entity
 @Table(name = "user")
-public class User {
+public class UserApp {
 
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
@@ -30,10 +30,10 @@ public class User {
     @JsonManagedReference
     private List<Post> post = new ArrayList<>();
 
-    public User() {
+    public UserApp() {
     }
 
-    public User(String name, String email, LocalDate birthDate) {
+    public UserApp(String name, String email, LocalDate birthDate) {
         this.name = name;
         this.email = email;
         this.birthDate = birthDate;
@@ -81,7 +81,7 @@ public class User {
 
     @Override
     public String toString() {
-        return "User{" +
+        return "UserApp{" +
                 "id=" + id +
                 ", name='" + name + '\'' +
                 ", email='" + email + '\'' +
@@ -94,9 +94,9 @@ public class User {
     public boolean equals(Object o) {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
-        User user = (User) o;
-        return Objects.equals(id, user.id) && Objects.equals(name, user.name) && Objects.equals(email, user.email)
-                && Objects.equals(birthDate, user.birthDate) && Objects.equals(post, user.post);
+        UserApp userApp = (UserApp) o;
+        return Objects.equals(id, userApp.id) && Objects.equals(name, userApp.name) && Objects.equals(email, userApp.email)
+                && Objects.equals(birthDate, userApp.birthDate) && Objects.equals(post, userApp.post);
     }
 
     @Override

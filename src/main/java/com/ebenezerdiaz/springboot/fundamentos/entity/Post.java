@@ -16,13 +16,13 @@ public class Post {
     private String description;
 
     @ManyToOne
-    private User user;
+    private UserApp user;
 
 
     public Post() {
     }
 
-    public Post(String description, User user) {
+    public Post(String description, UserApp user) {
         this.description = description;
         this.user = user;
     }
@@ -43,11 +43,11 @@ public class Post {
         this.description = description;
     }
 
-    public User getUser() {
+    public UserApp getUser() {
         return user;
     }
 
-    public void setUser(User user) {
+    public void setUser(UserApp user) {
         this.user = user;
     }
 
