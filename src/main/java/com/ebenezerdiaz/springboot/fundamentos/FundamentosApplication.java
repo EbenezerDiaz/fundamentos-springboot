@@ -51,16 +51,13 @@ public class FundamentosApplication implements CommandLineRunner {
 	public void run(String... args) throws Exception {
 		//ejemplosAnteriores();
 		saveUsersInDatabase();
-
 		getInformationJpqlFromUser();
-
 		getFindAndSort();
-
 		getFindByName();
-
 		getFindByNameAndEmail();
-
 		getFindByNameLike();
+		getFindByNameLikeOrderByIdDesc();
+		getFindByBirthDateAndEmail();
 	}
 
 	private void getInformationJpqlFromUser(){
@@ -94,6 +91,17 @@ public class FundamentosApplication implements CommandLineRunner {
 		userRepository.findByNameLike("User%").stream().forEach(LOGGER::info);
 	}
 
+	private void getFindByNameLikeOrderByIdDesc(){
+		LOGGER.info("findByNameLikeOrderByIdDesc ====================================");
+		userRepository.findByNameLikeOrderByIdDesc("User%").stream().forEach(LOGGER::info);
+	}
+
+	private void getFindByBirthDateAndEmail(){
+		LOGGER.info("Usuario con el metodo getFindByBirthDateAndEmail ================ " +
+				userRepository.getAllByBirthDateAndEmail(LocalDate.of(1980, 01, 3), "talina@email.com")
+						.orElseThrow(()-> new RuntimeException("No se encontro el usuario")));
+
+	}
 
 	private void saveUsersInDatabase(){
 		UserApp user1 = new UserApp("Ebenezer", "ebenezer@email.com", LocalDate.of(1980, 01, 1));
